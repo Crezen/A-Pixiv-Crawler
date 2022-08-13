@@ -8,9 +8,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 # 设置参数
-author_name = "ek121"  # 作者id
-end_num = sys.maxsize  # 要获取的作品数量
-file_path = ""  # 储存文件的路径
+author_name = "ek121"   # 作者id
+end_num = sys.maxsize   # 要获取的作品数量
+file_path = ""          # 储存图片的路径
 
 # 手动输入cookies
 cookie = input('请输入cookies')
