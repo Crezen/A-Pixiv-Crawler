@@ -7,6 +7,11 @@ Just a practice of two rookies
 - urllib3==1.25.
   11(其它版本可能没法科学上网)
 - beautifulsoup4
+- lxml
+- requests
+- 及这些包的依赖项
+
+之后将编写成requirements.txt
 
 ## 主要功能
 基于作者或关键词批量爬取pixiv图片

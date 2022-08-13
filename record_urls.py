@@ -1,10 +1,8 @@
 # 这是一个示例 Python 脚本。
-import ssl
 import sys
 import time
 import requests
 from bs4 import BeautifulSoup
-ssl._create_default_https_context = ssl._create_unverified_context
 
 
 # 设置参数
