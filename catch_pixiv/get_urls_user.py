@@ -25,19 +25,19 @@ def get_user(author_name, end_num, sleep_time, header):
 	nums = len(artwork_ids)   # 获取作品数量
 
 	# 爬取所有图片大图的url
-	for i, artwork_id in enumerate(artwork_ids):
-		# artwork_id = artwork_ids[i]  # 作品id
-		if i >= min(end_num, nums):
-			break
-		site = website + "ajax/illust/" + artwork_id + "/pages?lang=zh"
-		time.sleep(sleep_time)
-		session = requests.get(site, headers=header)
-		json = session.json()
-		session.close()
-		for body in json["body"]:
-			url = body['urls']['original']
-			with open('D:\\Work\\Code\\learn_crawler\\catch_pixiv\\data.txt', 'w+') as file:
-				file.writelines(url)
+	with open('D:\\Work\\Code\\learn_crawler\\catch_pixiv\\data.txt', 'w') as file:
+		for i, artwork_id in enumerate(artwork_ids):
+			# artwork_id = artwork_ids[i]  # 作品id
+			if i >= min(end_num, nums):
+				break
+			site = website + "ajax/illust/" + artwork_id + "/pages?lang=zh"
+			time.sleep(sleep_time)
+			session = requests.get(site, headers=header)
+			json = session.json()
+			session.close()
+			for body in json["body"]:
+				url = body['urls']['original']
+				file.writelines(url + '\n')
 				print('catch ' + url)
 	print('have caught ' + str(min(end_num, nums)))
 

@@ -3,7 +3,7 @@ import requests
 
 
 def catch_pics(sleep_time, header, file_path):
-	with open('data.txt', 'r+') as file:
+	with open('D:\\Work\\Code\\learn_crawler\\catch_pixiv\\data.txt', 'r') as file:
 		while True:
 			url = file.readline()
 			if url == '':
