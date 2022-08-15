@@ -32,6 +32,11 @@ def make_gif_from_zip(path_aim, path_zip, gif_name, duration, path_gif):
 		filename = os.path.join(path_aim, name)
 		gif_images.append(imageio.imread(filename))
 	os.makedirs(path_gif, exist_ok=True)
+	for file in os.listdir(path_aim):
+		file_path = os.path.join(path_aim, file)
+		if os.path.isfile(file_path):
+			os.remove(file_path)
+	os.removedirs(path_aim)
 	imageio.mimsave(path_gif + '\\' + gif_name, gif_images, "GIF", duration=duration)
 
 
