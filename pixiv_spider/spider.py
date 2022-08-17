@@ -7,7 +7,7 @@ from fake_useragent import UserAgent
 from requests import utils, HTTPError
 
 
-def get_cookie(cookie_path='catch_pixiv\\cookie.txt'):
+def get_cookie(cookie_path='pixiv_spider\\cookie.txt'):
 	file = open(cookie_path, 'r')
 	cookie = file.readline()
 	file.close()
@@ -23,7 +23,7 @@ def get_cookie(cookie_path='catch_pixiv\\cookie.txt'):
 	# 若登录不成功，网页中将包含’page-cool-index‘词段,则需重新输入cookie
 	if response.text.find('page-cool-index') != -1:
 		cookie = input('cookie已失效，请重新输入：')
-		with open('catch_pixiv\\cookie.txt', 'w') as file:
+		with open('pixiv_spider\\cookie.txt', 'w') as file:
 			file.writelines(cookie)
 
 	response.close()
