@@ -5,18 +5,17 @@ import requests
 import zipfile
 
 
-def catch_pics(sleep_time, header, file_path):
-	with open('D:\\Work\\Code\\learn_crawler\\catch_pixiv\\data.txt', 'r') as file:
-		while True:
-			url = file.readline()
-			if url == '':
-				break
-			pic_name = url[url.rfind('/') + 1:-1]
-			time.sleep(sleep_time)
-			response = requests.get(url, headers=header)
-			with open(file_path + pic_name, 'wb') as file1:
-				file1.write(response.content)
-				print('catch ' + pic_name)
+def catch_pics(url_list, sleep_time, header, file_path):
+	for url in url_list:
+		file_name = url[url.rfind('/') + 1:-1]
+		time.sleep(sleep_time)
+		response = requests.get(url, headers=header)
+		with open(file_path + file_name, 'wb') as file1:
+			file1.write(response.content)
+			print('catch ' + file_name)
+		if file_name.find('.zip') != -1:
+			create_gif(file_path + file_name, 0.06)
+		os.remove(file_path + file_name)
 
 
 def create_gif(file_path, duration):
